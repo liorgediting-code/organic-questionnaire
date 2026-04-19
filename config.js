@@ -5,11 +5,5 @@
 (function() {
   // In production on Vercel, this placeholder gets replaced during build
   // See build.js and vercel.json for the substitution logic
-  window.QUESTIONNAIRE_WEBHOOK_URL = '__WEBHOOK_URL_PLACEHOLDER__';
-
-  // If placeholder wasn't replaced (local dev), warn in console
-  if (window.QUESTIONNAIRE_WEBHOOK_URL.indexOf('PLACEHOLDER') !== -1) {
-    console.warn('Webhook URL not configured. Set WEBHOOK_URL in Vercel environment variables.');
-    window.QUESTIONNAIRE_WEBHOOK_URL = null;
-  }
+  window.QUESTIONNAIRE_WEBHOOK_URL = 'https://hook.eu2.make.com/uk8tvqsbrpo7n60yk8lely3r6hgo9ijt';
 })();
