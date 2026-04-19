@@ -1,0 +1,12 @@
+{
+  "name": "lioredits-organic-content-questionnaire",
+  "version": "1.0.0",
+  "description": "Hebrew RTL questionnaire for LiorEdits organic content strategy intake",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

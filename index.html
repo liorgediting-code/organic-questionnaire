@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שאלון אסטרטגיית תוכן אורגני | LiorEdits</title>
+<meta name="description" content="שאלון אסטרטגיית תוכן אורגני של LiorEdits - בונים ביחד נוכחות אמיתית ברשת">
+<meta property="og:title" content="שאלון אסטרטגיית תוכן אורגני | LiorEdits">
+<meta property="og:description" content="שאלון אסטרטגיית תוכן אורגני של LiorEdits">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0f14;
+  --bg-elevated:#151821;
+  --bg-card:#1a1e28;
+  --border:#242935;
+  --border-strong:#353b4a;
+  --text:#f0ece4;
+  --text-dim:#9aa0ac;
+  --text-faint:#6b7280;
+  --orange:#ff7a2e;
+  --orange-soft:#ff9a5a;
+  --blue:#4f8dff;
+  --success:#4ade80;
+  --danger:#ef4444;
+  --radius:10px;
+  --radius-lg:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Heebo',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  direction:rtl;
+  line-height:1.6;
+  min-height:100vh;
+  padding:0;
+}
+.bg-grain{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse at top right, rgba(255,122,46,0.08), transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(79,141,255,0.05), transparent 55%);
+  pointer-events:none;
+  z-index:0;
+}
+.container{
+  max-width:820px;
+  margin:0 auto;
+  padding:40px 24px 120px;
+  position:relative;
+  z-index:1;
+}
+.header{
+  text-align:right;
+  margin-bottom:56px;
+  padding-bottom:32px;
+  border-bottom:1px solid var(--border);
+}
+.brand{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+  color:var(--text-dim);
+  letter-spacing:0.5px;
+  margin-bottom:24px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+.brand::before{
+  content:"";
+  width:8px;height:8px;
+  background:var(--orange);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--orange);
+}
+h1{
+  font-size:40px;
+  font-weight:900;
+  line-height:1.15;
+  margin-bottom:18px;
+  letter-spacing:-0.5px;
+}
+h1 .accent{color:var(--orange)}
+.subtitle{
+  font-size:17px;
+  color:var(--text-dim);
+  max-width:640px;
+  line-height:1.7;
+}
+.meta-bar{
+  display:flex;
+  gap:24px;
+  margin-top:24px;
+  flex-wrap:wrap;
+  font-size:13px;
+  color:var(--text-faint);
+}
+.meta-bar span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.meta-bar span::before{
+  content:"●";
+  color:var(--orange);
+  font-size:8px;
+}
+
+/* Section blocks */
+.section{
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:32px 28px;
+  margin-bottom:24px;
+  position:relative;
+  overflow:hidden;
+}
+.section::before{
+  content:"";
+  position:absolute;
+  top:0;right:0;
+  width:4px;
+  height:100%;
+  background:linear-gradient(180deg, var(--orange), transparent);
+  opacity:0.6;
+}
+.section-num{
+  display:inline-block;
+  font-size:12px;
+  color:var(--orange);
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+.section h2{
+  font-size:26px;
+  font-weight:800;
+  margin-bottom:8px;
+  line-height:1.3;
+}
+.section-desc{
+  color:var(--text-dim);
+  font-size:15px;
+  margin-bottom:28px;
+  line-height:1.65;
+}
+
+/* Form elements */
+.field{
+  margin-bottom:26px;
+}
+.field:last-child{margin-bottom:0}
+.label{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:8px;
+  color:var(--text);
+}
+.label .required{color:var(--orange)}
+.hint{
+  display:block;
+  font-size:13px;
+  color:var(--text-faint);
+  margin-bottom:12px;
+  line-height:1.55;
+}
+.hint strong{color:var(--text-dim);font-weight:600}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select{
+  width:100%;
+  background:var(--bg-card);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  padding:14px 16px;
+  color:var(--text);
+  font-family:inherit;
+  font-size:15px;
+  line-height:1.5;
+  transition:border 0.2s, background 0.2s;
+  direction:rtl;
+  text-align:right;
+}
+input:focus,textarea:focus,select:focus{
+  outline:none;
+  border-color:var(--orange);
+  background:var(--bg);
+}
+textarea{
+  resize:vertical;
+  min-height:110px;
+  font-family:inherit;
+}
+textarea.large{min-height:150px}
+input::placeholder,textarea::placeholder{
+  color:var(--text-faint);
+  opacity:1;
+}
+select{
+  appearance:none;
+  background-image:url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239aa0ac' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat:no-repeat;
+  background-position:left 16px center;
+  padding-left:40px;
+}
+
+/* Checkbox groups */
+.checkbox-group{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:10px;
+}
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  background:var(--bg-card);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  cursor:pointer;
+  transition:all 0.15s;
+  user-select:none;
+}
+.checkbox-item:hover{
+  border-color:var(--orange);
+  background:var(--bg);
+}
+.checkbox-item input{
+  width:18px;height:18px;
+  accent-color:var(--orange);
+  cursor:pointer;
+  flex-shrink:0;
+}
+.checkbox-item span{
+  font-size:14px;
+  line-height:1.4;
+}
+.checkbox-item.checked{
+  border-color:var(--orange);
+  background:rgba(255,122,46,0.05);
+}
+
+/* Radio groups */
+.radio-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.radio-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:14px 16px;
+  background:var(--bg-card);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  cursor:pointer;
+  transition:all 0.15s;
+}
+.radio-item:hover{border-color:var(--orange)}
+.radio-item input{
+  width:18px;height:18px;
+  accent-color:var(--orange);
+  cursor:pointer;
+  margin-top:2px;
+  flex-shrink:0;
+}
+.radio-item span{font-size:15px;line-height:1.5}
+.radio-item.checked{
+  border-color:var(--orange);
+  background:rgba(255,122,46,0.05);
+}
+
+/* Scale rating */
+.scale-group{
+  display:flex;
+  gap:8px;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.scale-btn{
+  flex:1;
+  min-width:44px;
+  aspect-ratio:1;
+  background:var(--bg-card);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius);
+  color:var(--text);
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all 0.15s;
+  font-family:inherit;
+}
+.scale-btn:hover{border-color:var(--orange)}
+.scale-btn.active{
+  background:var(--orange);
+  border-color:var(--orange);
+  color:#0d0f14;
+}
+.scale-labels{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--text-faint);
+  margin-top:8px;
+}
+
+/* Critical callout */
+.critical-note{
+  background:linear-gradient(135deg, rgba(255,122,46,0.08), rgba(255,122,46,0.02));
+  border:1px solid rgba(255,122,46,0.25);
+  border-radius:var(--radius);
+  padding:16px 20px;
+  margin-bottom:24px;
+  font-size:14px;
+  color:var(--text-dim);
+  line-height:1.6;
+}
+.critical-note strong{color:var(--orange);display:block;margin-bottom:4px;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+
+/* Progress bar */
+.progress-bar{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--border);
+  z-index:100;
+}
+.progress-fill{
+  height:100%;
+  background:var(--orange);
+  width:0%;
+  transition:width 0.3s;
+  box-shadow:0 0 8px var(--orange);
+}
+
+/* Submit section */
+.submit-section{
+  background:linear-gradient(135deg, rgba(255,122,46,0.08), rgba(79,141,255,0.04));
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius-lg);
+  padding:40px 32px;
+  text-align:center;
+  margin-top:40px;
+}
+.submit-section h3{
+  font-size:22px;
+  margin-bottom:10px;
+  font-weight:800;
+}
+.submit-section p{
+  color:var(--text-dim);
+  margin-bottom:24px;
+  font-size:15px;
+}
+.submit-btn{
+  background:var(--orange);
+  color:#0d0f14;
+  border:none;
+  padding:16px 48px;
+  font-size:17px;
+  font-weight:800;
+  border-radius:var(--radius);
+  cursor:pointer;
+  font-family:inherit;
+  transition:all 0.2s;
+  box-shadow:0 0 0 0 rgba(255,122,46,0.5);
+}
+.submit-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 24px rgba(255,122,46,0.3);
+}
+.submit-btn:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+/* Success overlay */
+.success-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(13,15,20,0.95);
+  backdrop-filter:blur(8px);
+  z-index:200;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.success-overlay.show{display:flex}
+.success-card{
+  background:var(--bg-elevated);
+  border:1px solid var(--border-strong);
+  border-radius:var(--radius-lg);
+  padding:48px 40px;
+  max-width:480px;
+  text-align:center;
+}
+.success-icon{
+  width:72px;height:72px;
+  margin:0 auto 20px;
+  background:rgba(74,222,128,0.1);
+  border:2px solid var(--success);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  color:var(--success);
+}
+.success-card h3{font-size:26px;margin-bottom:12px}
+.success-card p{color:var(--text-dim);line-height:1.7}
+
+/* Error message */
+.error-msg{
+  background:rgba(239,68,68,0.1);
+  border:1px solid rgba(239,68,68,0.3);
+  color:#fca5a5;
+  padding:12px 16px;
+  border-radius:var(--radius);
+  margin-top:16px;
+  font-size:14px;
+  display:none;
+}
+.error-msg.show{display:block}
+
+/* Responsive */
+@media(max-width:640px){
+  .container{padding:24px 16px 80px}
+  h1{font-size:30px}
+  .section{padding:24px 20px}
+  .section h2{font-size:21px}
+  .checkbox-group{grid-template-columns:1fr}
+  .submit-section{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+<div class="bg-grain"></div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="container">
+
+<header class="header">
+  <div class="brand">LiorEdits · אסטרטגיית תוכן אורגני</div>
+  <h1>בוא נבנה לך נוכחות <span class="accent">אמיתית</span> ברשת</h1>
+  <p class="subtitle">השאלון הזה הוא הבסיס לכל אסטרטגיית התוכן שנבנה יחד. אין כאן שאלות מיותרות. כל שאלה כאן משרתת מטרה אחת: להוציא ממך את הזווית שתגרום לאנשים לעצור את האצבע ולצפות עד הסוף.</p>
+  <div class="meta-bar">
+    <span>זמן מילוי משוער: 20 דקות</span>
+    <span>תשובות ארוכות עדיפות על קצרות</span>
+    <span>אין תשובות "נכונות"</span>
+  </div>
+</header>
+
+<div class="critical-note">
+  <strong>לפני שמתחילים</strong>
+  תענה כאילו אתה מדבר עם חבר קרוב, לא כאילו אתה כותב קורות חיים. הדברים הכי שימושיים לי בשאלון הזה הם הדעות הלא מנומסות, הטעויות, והדברים שלא נוח להגיד בפה. אלה אלה שמוכרים.
+</div>
+
+<form id="questionnaireForm">
+
+<!-- SECTION 1: BASICS -->
+<section class="section">
+  <div class="section-num">חלק 1</div>
+  <h2>מי אתה ומה אתה עושה</h2>
+  <p class="section-desc">מתחילים קל. אם אתה לא יודע לסכם את מה שאתה עושה בשתי שורות, זו כבר הבעיה הראשונה שנפתור.</p>
+
+  <div class="field">
+    <label class="label">שם מלא <span class="required">*</span></label>
+    <input type="text" name="full_name" required>
+  </div>
+
+  <div class="field">
+    <label class="label">שם העסק <span class="required">*</span></label>
+    <input type="text" name="business_name" required>
+  </div>
+
+  <div class="field">
+    <label class="label">מה תחום העיסוק שלך בשתי מילים? <span class="required">*</span></label>
+    <span class="hint">לדוגמה: "מאמן עסקי", "יועצת זוגית", "קליניקה לפיזיותרפיה". בלי תארים מפוצצים.</span>
+    <input type="text" name="business_category" required>
+  </div>
+
+  <div class="field">
+    <label class="label">איך אתה מסביר את מה שאתה עושה לסבתא שלך? <span class="required">*</span></label>
+    <span class="hint">לא הצגה רשמית. איך באמת. זה לרוב יהיה הניסוח הכי חזק לתוכן.</span>
+    <textarea name="grandma_pitch" required placeholder="דוגמה: אני עוזר לבעלי עסקים קטנים להפסיק לשרוף כסף על פרסומים ולהתחיל להביא לקוחות דרך אינסטגרם"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">כמה שנים אתה בתחום? <span class="required">*</span></label>
+    <input type="text" name="years_in_field" placeholder="לדוגמה: 7 שנים, מתוכן 3 כעצמאי" required>
+  </div>
+
+  <div class="field">
+    <label class="label">אתר או דף נחיתה קיים</label>
+    <input type="url" name="website_url" placeholder="https://...">
+  </div>
+</section>
+
+<!-- SECTION 2: AUDIENCE -->
+<section class="section">
+  <div class="section-num">חלק 2</div>
+  <h2>הלקוח האידיאלי שלך</h2>
+  <p class="section-desc">לא "נשים בנות 25-55". ככל שתצליח לתאר אדם אחד ספציפי, התוכן יהיה טוב יותר. הסרטונים נכתבים לאדם אחד בראש, לא לקבוצה.</p>
+
+  <div class="field">
+    <label class="label">תאר את הלקוח האידיאלי שלך כאילו אתה מתאר חבר <span class="required">*</span></label>
+    <span class="hint">גיל, מצב משפחתי, מקצוע, מה שהוא עושה ביום, איפה הוא גר, איזה טלפון יש לו, מה הוא עושה בשעות הפנאי, באילו עמודים הוא עוקב. תהיה ספציפי עד הכאב.</span>
+    <textarea name="ideal_client" class="large" required placeholder="דוגמה: דנה, בת 38, אמא לשניים, מנהלת משאבי אנוש במשרד עם 40 עובדים, נהגה בעבר להתאמן 3 פעמים בשבוע ועכשיו בקושי מגיעה פעם, עוקבת אחרי מאמני כושר באינסטגרם אבל אף פעם לא סגרה עם אחד..."></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה הדבר שמפריע לו הכי הרבה בחיים שלו בקשר לבעיה שאתה פותר? <span class="required">*</span></label>
+    <span class="hint">לא "רוצה להצליח". משהו קונקרטי. המשפט שהוא אומר לעצמו בראש בשעה 23:00 כשהוא לא מצליח להירדם.</span>
+    <textarea name="main_pain" required placeholder="דוגמה: הוא מרגיש שהוא עובד 12 שעות ביום ועדיין לא רואה את הכסף. המשכורת שלו כעצמאי פחות ממה שהוא הרוויח כשכיר לפני שנתיים."></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה הוא ניסה עד עכשיו ולא עבד? <span class="required">*</span></label>
+    <span class="hint">קורסים, מאמנים אחרים, תרופות, תוכנות, ספרים, סרטוני יוטיוב. תפרט.</span>
+    <textarea name="tried_before" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">למה זה לא עבד? (הסיבה האמיתית, מניסיונך) <span class="required">*</span></label>
+    <textarea name="why_failed" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">שלוש התנגדויות שאתה שומע שוב ושוב לפני סגירת עסקה <span class="required">*</span></label>
+    <span class="hint">"יקר מדי", "אין לי זמן", "אני צריך לדבר עם בן או בת הזוג". תן דוגמאות אמיתיות מהשיחות שלך.</span>
+    <textarea name="objections" required></textarea>
+  </div>
+</section>
+
+<!-- SECTION 3: THE POV -->
+<section class="section">
+  <div class="section-num">חלק 3 · הלב של הכל</div>
+  <h2>הדעות שלך (חד)</h2>
+  <p class="section-desc">זה החלק החשוב ביותר בשאלון. סרטונים אוטנתיים נבנים על דעות חדות, לא על טיפים גנריים. אם תענה כאן בבטחון, התוכן יהיה חזק. אם תענה מסביב למילה, התוכן יהיה משעמם. אין דרך אחרת.</p>
+
+  <div class="field">
+    <label class="label">מה המיתוס הכי גדול בתחום שלך? מה שכולם מאמינים בו ולדעתך הוא פשוט טעות? <span class="required">*</span></label>
+    <span class="hint">תהיה חד. "אני חושב שסטרואידים זה הדבר הכי פחות מזיק שאתה יכול לעשות לגוף שלך בהשוואה ל...". "תזונה זה 80% מהתוצאה זה שקר. אם לא ישנים 8 שעות בלילה, תזונה לא שווה כלום". זה הסוג של דעה שאני מחפש.</span>
+    <textarea name="biggest_myth" class="large" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה אתה חושב על המתחרים שלך? איפה הם טועים? <span class="required">*</span></label>
+    <span class="hint">בלי שמות. אבל בכנות: "רוב המאמנים בתחום שלי מוכרים תוכניות של 90 יום כי זה מה שקל למכור. אבל 90 יום לא מספיקים כדי לשנות שום דבר".</span>
+    <textarea name="competitors_wrong" class="large" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה הדבר שאתה עושה אחרת מכולם? <span class="required">*</span></label>
+    <span class="hint">לא "יחס אישי". יחס אישי זה לא תשובה. משהו ספציפי. שיטה, גישה, סדר פעולות שאחרים לא עושים.</span>
+    <textarea name="what_different" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה הדבר שלקוחות שלך אומרים לך שגרם להם לסגור איתך דווקא ולא עם אחר? <span class="required">*</span></label>
+    <span class="hint">תן ציטוטים ממשיים אם אתה זוכר. זה זהב לסרטונים.</span>
+    <textarea name="why_they_picked_you" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">על מה אתה נלחם? מה הדבר שאם היית שומע לקוח עושה אותו היית מפסיק את השיחה? <span class="required">*</span></label>
+    <span class="hint">זה מראה עמוד שדרה. "אני לא עובד עם אנשים שמחפשים פתרונות מהירים". "אני לא יכול לשמוע עוד פעם אחת ש...". תהיה כנה.</span>
+    <textarea name="what_you_fight" required></textarea>
+  </div>
+</section>
+
+<!-- SECTION 4: STORY & CREDIBILITY -->
+<section class="section">
+  <div class="section-num">חלק 4</div>
+  <h2>הסיפור שלך והאמינות</h2>
+  <p class="section-desc">אנשים לא סוגרים עם מומחים. הם סוגרים עם בני אדם שעברו את מה שהם עוברים עכשיו. הסיפור שלך הוא הכי שיווקי שאתה יכול לתת.</p>
+
+  <div class="field">
+    <label class="label">איך הגעת לתחום הזה? <span class="required">*</span></label>
+    <span class="hint">הסיפור האמיתי, לא זה שאתה מספר בהרצאה. מה הביא אותך לכאן? מה העבודה שלך לפני? למה עזבת?</span>
+    <textarea name="origin_story" class="large" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה הרגע בחייך שבו היית בדיוק במצב של הלקוח שלך היום? <span class="required">*</span></label>
+    <span class="hint">הנקודה הנמוכה. המקום שבו ידעת שמשהו חייב להשתנות. זה הדלק של כל סרטון טוב.</span>
+    <textarea name="rock_bottom" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">שני מקרי הצלחה שאתה הכי גאה בהם (עם מספרים אם אפשר) <span class="required">*</span></label>
+    <span class="hint">שם פרטי בלבד או "לקוח שלי ש...". תיאור לפני ואחרי. תוך כמה זמן. מה הוא אמר לך אחרי. ככל שיותר ספציפי כך יותר חזק. זה מה שהולך לסרטוני Before/After.</span>
+    <textarea name="success_stories" class="large" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">ההסמכות שלך בתחום (תעודות, שנות ניסיון, אנשים משפיעים שעבדת איתם, השקעות שהחזירו, מעסיקים לשעבר)</label>
+    <textarea name="credentials"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מספרים שאתה יכול להתגאות בהם</label>
+    <span class="hint">לקוחות שעבדת איתם, קילוגרמים שאיבדו, שעות ששיחררת, הכנסות שהוכפלו, אחוזי הצלחה. מספרים עושים פלא בסרטונים.</span>
+    <textarea name="proof_numbers"></textarea>
+  </div>
+</section>
+
+<!-- SECTION 5: PRODUCT & TRANSFORMATION -->
+<section class="section">
+  <div class="section-num">חלק 5</div>
+  <h2>מה אתה מוכר</h2>
+  <p class="section-desc">הסרטונים לא מוכרים את המוצר. הם מוכרים את התוצאה. צריך להבין בדיוק לאיזו תוצאה אנחנו מובילים אותם.</p>
+
+  <div class="field">
+    <label class="label">מהו השירות המרכזי שאתה רוצה להביא אליו לידים דרך התוכן? <span class="required">*</span></label>
+    <span class="hint">שם השירות, מה הוא כולל, כמה הוא עולה בגדול.</span>
+    <textarea name="main_service" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">מה הטרנספורמציה שהלקוח עובר? <span class="required">*</span></label>
+    <span class="hint">ממה הוא בא, לאן הוא מגיע. לא "הוא מצליח בחיים". ספציפי. "מ-5,000 ש"ח הכנסה ל-25,000 ש"ח הכנסה". "מכאבי גב כרוניים ל-5 ק"מ ריצה ברצף". "מ-2 מריבות בשבוע עם בן הזוג ל-2 בחודש".</span>
+    <textarea name="transformation" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">תוך כמה זמן רואים תוצאות ראשונות? <span class="required">*</span></label>
+    <input type="text" name="first_results" required placeholder="לדוגמה: תוך שבועיים">
+  </div>
+
+  <div class="field">
+    <label class="label">מה הדבר שלקוח מקבל אצלך שהוא לא מקבל בשום מקום אחר? <span class="required">*</span></label>
+    <textarea name="unique_value" required></textarea>
+  </div>
+</section>
+
+<!-- SECTION 6: VOICE & TONE -->
+<section class="section">
+  <div class="section-num">חלק 6</div>
+  <h2>הקול והטון שלך</h2>
+  <p class="section-desc">כשאני אכתוב סקריפטים עבורך, אני רוצה שזה יישמע כאילו אתה אמרת את זה. לא כאילו מישהו אחר. בלי זה זה AI slop.</p>
+
+  <div class="field">
+    <label class="label">איך אתה מדבר עם לקוחות בשיחות מכירה? <span class="required">*</span></label>
+    <div class="radio-group">
+      <label class="radio-item"><input type="radio" name="tone_style" value="direct" required><span>ישיר וחד. לא עוטפים אותך בכפפות. אומר את מה שחושב.</span></label>
+      <label class="radio-item"><input type="radio" name="tone_style" value="empathetic"><span>אמפתי ורך. מקשיב, שואל, מבין לפני שמייעץ.</span></label>
+      <label class="radio-item"><input type="radio" name="tone_style" value="authoritative"><span>מקצועי ורציני. טון של מומחה עם סמכות.</span></label>
+      <label class="radio-item"><input type="radio" name="tone_style" value="playful"><span>קליל והומוריסטי. שובר את הרצינות.</span></label>
+      <label class="radio-item"><input type="radio" name="tone_style" value="storyteller"><span>מספר סיפורים. מסביר דרך דוגמאות ממקרים אמיתיים.</span></label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">5 ביטויים, מילים או משפטים שאתה משתמש בהם הרבה <span class="required">*</span></label>
+    <span class="hint">הסלנג שלך. מילים אהובות. משפט שאתה אומר פעמיים ביום. זה הולך לתסריטים של הסרטונים.</span>
+    <textarea name="catchphrases" required placeholder="לדוגמה: 'זה לא קשה, זה פשוט לא נעים', 'בוא נפסיק לספר לעצמנו ש...'"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">דברים שאתה לא תגיד לעולם <span class="required">*</span></label>
+    <span class="hint">מונחים מקצועיים מפוצצים, קלישאות שאתה שונא, כל מה שגורם לך להרגיש מזויף. זה מציל אותנו מ-AI slop.</span>
+    <textarea name="never_say" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">3 יוצרי תוכן שאתה עוקב אחריהם וחושב שהסגנון שלהם מתאים לך</label>
+    <span class="hint">קישורים לאינסטגרם או טיקטוק. לא חובה שיהיו מאותו תחום. אני רוצה להבין איזה סוג של אנרגיה אתה אוהב.</span>
+    <textarea name="creator_inspiration"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">3 יוצרי תוכן שאתה לא סובל ואתה בוודאות לא רוצה להיראות כמוהם</label>
+    <textarea name="creator_avoid"></textarea>
+  </div>
+</section>
+
+<!-- SECTION 7: GOALS -->
+<section class="section">
+  <div class="section-num">חלק 7</div>
+  <h2>מטרות וציפיות</h2>
+  <p class="section-desc">אם לא מסכימים על המדד מראש, לא נדע אם הצליח. גם אני לא רוצה שתצפה מ-12 סרטונים למה שהם לא יכולים לתת.</p>
+
+  <div class="field">
+    <label class="label">מה המטרה המרכזית של הסרטונים האורגניים? <span class="required">*</span></label>
+    <div class="radio-group">
+      <label class="radio-item"><input type="radio" name="main_goal" value="support_ads" required><span>בעיקר לתמוך בקמפיין הממומן (שלידים שנכנסים לפרופיל יראו תוכן איכותי)</span></label>
+      <label class="radio-item"><input type="radio" name="main_goal" value="organic_leads"><span>להביא לידים אורגניים ישירות, גם ללא תקציב פרסום</span></label>
+      <label class="radio-item"><input type="radio" name="main_goal" value="authority"><span>לבנות סמכות ומותג אישי בתחום</span></label>
+      <label class="radio-item"><input type="radio" name="main_goal" value="both_equal"><span>שילוב - גם תמיכה בממומן וגם לידים אורגניים</span></label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">במקרה הטוב, איך תיראה הצלחה בסוף החודש הראשון? <span class="required">*</span></label>
+    <span class="hint">תהיה מציאותי. לא "מיליון עוקבים". משהו שאפשר למדוד.</span>
+    <textarea name="success_metric" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">האם יש לך ניסיון קודם עם סרטונים? <span class="required">*</span></label>
+    <div class="radio-group">
+      <label class="radio-item"><input type="radio" name="video_experience" value="none" required><span>מעולם לא צילמתי סרטון שיווקי</span></label>
+      <label class="radio-item"><input type="radio" name="video_experience" value="some"><span>צילמתי פעם פעמיים, לא בקביעות</span></label>
+      <label class="radio-item"><input type="radio" name="video_experience" value="regular"><span>מצלם באופן קבוע אבל לא מרוצה מהתוצאות</span></label>
+      <label class="radio-item"><input type="radio" name="video_experience" value="experienced"><span>יש לי ניסיון טוב והבנה איך זה עובד</span></label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">כמה נוח לך מול מצלמה בסולם 1 עד 10? <span class="required">*</span></label>
+    <div class="scale-group" id="cameraComfort">
+      <button type="button" class="scale-btn" data-value="1">1</button>
+      <button type="button" class="scale-btn" data-value="2">2</button>
+      <button type="button" class="scale-btn" data-value="3">3</button>
+      <button type="button" class="scale-btn" data-value="4">4</button>
+      <button type="button" class="scale-btn" data-value="5">5</button>
+      <button type="button" class="scale-btn" data-value="6">6</button>
+      <button type="button" class="scale-btn" data-value="7">7</button>
+      <button type="button" class="scale-btn" data-value="8">8</button>
+      <button type="button" class="scale-btn" data-value="9">9</button>
+      <button type="button" class="scale-btn" data-value="10">10</button>
+    </div>
+    <div class="scale-labels">
+      <span>מרגיש קפוא</span>
+      <span>טבעי לגמרי</span>
+    </div>
+    <input type="hidden" name="camera_comfort" id="cameraComfortValue" required>
+  </div>
+
+  <div class="field">
+    <label class="label">האם אתה מסכים שנצלם לקוחות או תהליכים אמיתיים (בהסכמתם)? <span class="required">*</span></label>
+    <span class="hint">סרטוני Before/After ותהליך של לקוח אמיתי הם הזהב של תוכן אורגני. חשוב שנבין כמה דלתות פתוחות.</span>
+    <div class="radio-group">
+      <label class="radio-item"><input type="radio" name="client_filming" value="yes_already" required><span>כן, אני בטוח שיש לקוחות שיסכימו</span></label>
+      <label class="radio-item"><input type="radio" name="client_filming" value="yes_ask"><span>כן אבל אצטרך לשאול אותם</span></label>
+      <label class="radio-item"><input type="radio" name="client_filming" value="maybe"><span>אולי. בעייתי בגלל סודיות</span></label>
+      <label class="radio-item"><input type="radio" name="client_filming" value="no"><span>לא, בלתי אפשרי בתחום שלי</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8: ASSETS -->
+<section class="section">
+  <div class="section-num">חלק 8</div>
+  <h2>חומרים קיימים</h2>
+  <p class="section-desc">תוכן לא קם מהאוויר. כל מה שיש לך מהעבר יעזור לנו לייצר מהר יותר ולשמור על עקביות.</p>
+
+  <div class="field">
+    <label class="label">יש לך סרטונים קיימים (גם לא מקצועיים)? <span class="required">*</span></label>
+    <div class="radio-group">
+      <label class="radio-item"><input type="radio" name="existing_content" value="yes_lots" required><span>כן, הרבה. אוכל לשלוח דרייב</span></label>
+      <label class="radio-item"><input type="radio" name="existing_content" value="yes_some"><span>כן, כמה. נוכל לעבור עליהם</span></label>
+      <label class="radio-item"><input type="radio" name="existing_content" value="few"><span>בודדים, לא משהו שימושי</span></label>
+      <label class="radio-item"><input type="radio" name="existing_content" value="none"><span>אין בכלל</span></label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">יש לך עדויות או ביקורות טובות שאפשר להשתמש בהן?</label>
+    <span class="hint">מייל, וואטסאפ, ביקורות בגוגל. תצרף צילומי מסך או ציטוטים. זה הולך לסרטונים.</span>
+    <textarea name="testimonials"></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">יש לך חומרים ויזואליים?</label>
+    <span class="hint">לוגו, צילומי מוצר, תמונות מאירועים, תעודות. תספר מה יש.</span>
+    <textarea name="visual_assets"></textarea>
+  </div>
+</section>
+
+<!-- SECTION 9: FINAL -->
+<section class="section">
+  <div class="section-num">חלק 9 · אחרון</div>
+  <h2>שאלת הקסם</h2>
+  <p class="section-desc">השאלה האחרונה. הכי חשובה. תענה עליה לפני שאתה סוגר את המחשב.</p>
+
+  <div class="field">
+    <label class="label">אם היה לך סרטון אחד ויראלי עם 500 אלף צפיות, מה הדבר הראשון שאתה היית רוצה שיקרה? <span class="required">*</span></label>
+    <span class="hint">לידים? מכירה של קורס? מילוי קליניקה? הופעה בפודקאסט? זה הולך לעצב את כל ההנעה לפעולה בסרטונים. תהיה כנה.</span>
+    <textarea name="viral_dream" class="large" required></textarea>
+  </div>
+
+  <div class="field">
+    <label class="label">משהו שאתה חושב שחשוב שאדע ולא שאלתי?</label>
+    <textarea name="anything_else"></textarea>
+  </div>
+</section>
+
+<div class="submit-section">
+  <h3>סיימת. עכשיו זה אצלי.</h3>
+  <p>אחרי קבלת השאלון אני אחזור אליך תוך 48 שעות עם אסטרטגיה מותאמת, לוח תוכן ופירוט צילומים ראשון.</p>
+  <button type="submit" class="submit-btn" id="submitBtn">שלח שאלון</button>
+  <div class="error-msg" id="errorMsg">הייתה שגיאה בשליחה. אנא נסה שוב או פנה ישירות לליאור.</div>
+</div>
+
+</form>
+
+</div>
+
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon">✓</div>
+    <h3>השאלון התקבל</h3>
+    <p>תודה על הזמן והכנות. אני חוזר אליך תוך 48 שעות עם הצעה מפורטת של אסטרטגיה ולוח תוכן.</p>
+  </div>
+</div>
+
+<script src="/config.js"></script>
+<script>
+// Configuration - webhook URL is injected via config.js from Vercel env variables
+// For local testing, you can hardcode it here temporarily
+const WEBHOOK_URL = window.QUESTIONNAIRE_WEBHOOK_URL || 'REPLACE_WITH_YOUR_MAKE_WEBHOOK_URL';
+
+const form = document.getElementById('questionnaireForm');
+const progressFill = document.getElementById('progressFill');
+const errorMsg = document.getElementById('errorMsg');
+
+function getRequiredFieldCount(){
+  const fields = form.querySelectorAll('[required]');
+  const radioNames = new Set();
+  let count = 0;
+  fields.forEach(f=>{
+    if(f.type === 'radio'){
+      if(!radioNames.has(f.name)){
+        radioNames.add(f.name);
+        count++;
+      }
+    } else {
+      count++;
+    }
+  });
+  return count;
+}
+
+function getFilledFieldCount(){
+  const fields = form.querySelectorAll('[required]');
+  const radioNames = new Set();
+  let filled = 0;
+  fields.forEach(f=>{
+    if(f.type === 'radio'){
+      if(!radioNames.has(f.name)){
+        radioNames.add(f.name);
+        if(form.querySelector(`[name="${f.name}"]:checked`)) filled++;
+      }
+    } else if(f.value && f.value.trim() !== ''){
+      filled++;
+    }
+  });
+  return filled;
+}
+
+function updateProgress(){
+  const total = getRequiredFieldCount();
+  const filled = getFilledFieldCount();
+  const pct = total > 0 ? (filled/total)*100 : 0;
+  progressFill.style.width = Math.min(pct,100)+'%';
+}
+
+form.addEventListener('input', updateProgress);
+form.addEventListener('change', updateProgress);
+
+// Visual state for checkboxes/radios
+function syncCheckedState(e){
+  if(e.target.type === 'checkbox' && e.target.closest('.checkbox-item')){
+    e.target.parentElement.classList.toggle('checked', e.target.checked);
+  }
+  if(e.target.type === 'radio' && e.target.closest('.radio-item')){
+    document.querySelectorAll(`.radio-item input[name="${e.target.name}"]`).forEach(s=>{
+      s.parentElement.classList.remove('checked');
+    });
+    e.target.parentElement.classList.add('checked');
+  }
+}
+form.addEventListener('change', syncCheckedState);
+
+// Scale buttons
+document.querySelectorAll('.scale-group').forEach(group=>{
+  const hiddenId = group.id + 'Value';
+  const hidden = document.getElementById(hiddenId);
+  group.querySelectorAll('.scale-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      group.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      if(hidden){
+        hidden.value = btn.dataset.value;
+        hidden.dispatchEvent(new Event('input', {bubbles:true}));
+      }
+      updateProgress();
+    });
+  });
+});
+
+// Form submission
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  const submitBtn = document.getElementById('submitBtn');
+  errorMsg.classList.remove('show');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'שולח...';
+
+  // Collect form data
+  const formData = new FormData(form);
+  const data = {};
+  formData.forEach((value, key)=>{
+    if(key.endsWith('[]')){
+      const cleanKey = key.slice(0,-2);
+      if(!data[cleanKey]) data[cleanKey] = [];
+      data[cleanKey].push(value);
+    } else {
+      data[key] = value;
+    }
+  });
+
+  // Add metadata
+  data.submitted_at = new Date().toISOString();
+  data.user_agent = navigator.userAgent;
+  data.source = 'liooredits-questionnaire';
+
+  try {
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    if(!response.ok) throw new Error('Webhook returned ' + response.status);
+
+    document.getElementById('successOverlay').classList.add('show');
+    window.scrollTo({top:0, behavior:'smooth'});
+  } catch(err) {
+    console.error('Submission error:', err);
+    errorMsg.classList.add('show');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'שלח שאלון';
+  }
+});
+
+updateProgress();
+</script>
+</body>
+</html>
