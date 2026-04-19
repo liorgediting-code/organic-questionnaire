@@ -823,11 +823,8 @@ select{
   </div>
 </div>
 
-<script src="/config.js"></script>
 <script>
-// Configuration - webhook URL is injected via config.js from Vercel env variables
-// For local testing, you can hardcode it here temporarily
-const WEBHOOK_URL = window.QUESTIONNAIRE_WEBHOOK_URL || 'REPLACE_WITH_YOUR_MAKE_WEBHOOK_URL';
+const WEBHOOK_URL = 'https://hook.eu2.make.com/uk8tvqsbrpo7n60yk8lely3r6hgo9ijt';
 
 const form = document.getElementById('questionnaireForm');
 const progressFill = document.getElementById('progressFill');
@@ -935,14 +932,11 @@ form.addEventListener('submit', async function(e){
   data.source = 'liooredits-questionnaire';
 
   try {
-    const response = await fetch(WEBHOOK_URL, {
+    await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify(data)
     });
-
-    if(!response.ok) throw new Error('Webhook returned ' + response.status);
-
     document.getElementById('successOverlay').classList.add('show');
     window.scrollTo({top:0, behavior:'smooth'});
   } catch(err) {
